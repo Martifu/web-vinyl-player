@@ -1,9 +1,9 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  output: "export",
+  // Note: Removed "output: export" because API routes require a server
+  // Deploy to Vercel, Railway, or similar platform for full functionality
   images: {
-
     unoptimized: true,
     remotePatterns: [
       {
@@ -15,4 +15,5 @@ const nextConfig: NextConfig = {
 };
 
 export default nextConfig;
+
 
