@@ -11,7 +11,7 @@ export const Tonearm = ({ isPlaying, className }: TonearmProps) => {
     // Rotation logic:
     // 0 deg = Resting position (off record)
     // 25 deg = Playing position (on record)
-    const rotation = isPlaying ? 25 : 0;
+    const rotation = isPlaying ? -10 : -45;
 
     return (
         <div className={`relative ${className}`} style={{ width: 200, height: 400 }}>
@@ -20,7 +20,10 @@ export const Tonearm = ({ isPlaying, className }: TonearmProps) => {
                 initial={{ rotate: 0 }}
                 animate={{ rotate: rotation }}
                 transition={{ type: "spring", stiffness: 50, damping: 20 }}
-                style={{ transformOrigin: "75% 15%" }} // Pivot at the base/counterweight area
+                style={{
+                    transformOrigin: "55% 30%", // Pivot at the base/counterweight area
+                    rotate: -25, // Initial rotation to tilt base to the right
+                }}
             >
                 <Image
                     src="/arm.png"

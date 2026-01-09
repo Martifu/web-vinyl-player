@@ -107,8 +107,8 @@ export const PlayerScreen = () => {
 
                                             {/* Side A */}
                                             {sideA.length > 0 && (
-                                                <div className="space-y-2">
-                                                    <h3 className="flex items-center gap-2 text-sm font-bold opacity-40 uppercase tracking-widest mb-3">
+                                                <div className="space-y-2 px-2">
+                                                    <h3 className="flex items-center gap-2 text-sm font-bold opacity-40 uppercase tracking-widest mb-3 pl-2">
                                                         <Disc className="w-4 h-4" /> Side A
                                                     </h3>
                                                     <div className="flex flex-col gap-1">
@@ -128,8 +128,8 @@ export const PlayerScreen = () => {
 
                                             {/* Side B */}
                                             {sideB.length > 0 && (
-                                                <div className="space-y-2 pt-2">
-                                                    <h3 className="flex items-center gap-2 text-sm font-bold opacity-40 uppercase tracking-widest mb-3">
+                                                <div className="space-y-2 pt-2 px-2">
+                                                    <h3 className="flex items-center gap-2 text-sm font-bold opacity-40 uppercase tracking-widest mb-3 pl-2">
                                                         <Disc className="w-4 h-4" /> Side B
                                                     </h3>
                                                     <div className="flex flex-col gap-1">
@@ -165,12 +165,11 @@ const TrackItem = ({ track, index, isActive, isPlaying, onClick }: any) => {
         <button
             onClick={onClick}
             className={cn(
-                "w-full flex items-center gap-4 p-4 rounded-xl transition-all text-left group border border-transparent mx-1 my-1", // Added margins
+                "w-full flex items-center gap-4 p-4 rounded-xl transition-all text-left group border border-transparent",
                 isActive
                     ? "bg-[#1A1A1A] text-white shadow-xl scale-[1.02] border-white/10 z-10"
                     : "hover:bg-black/5 dark:hover:bg-white/5 text-foreground/80 hover:text-foreground hover:pl-5"
             )}
-            style={{ width: 'calc(100% - 8px)' }} // Compensate for margins
         >
             <div className={cn(
                 "w-8 h-8 flex items-center justify-center rounded-full font-bold text-sm shrink-0 transition-colors",

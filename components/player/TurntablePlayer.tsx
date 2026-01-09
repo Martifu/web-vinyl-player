@@ -69,7 +69,7 @@ export const TurntablePlayer = ({ vinyl, currentTrack }: TurntablePlayerProps) =
             </div>
 
             {/* Tonearm - Large and realistic placement */}
-            <div className="absolute right-[-5%] top-[5%] pointer-events-none z-20 drop-shadow-2xl scale-125 origin-top-right">
+            <div className="absolute right-[0%] top-[-5%] pointer-events-none z-20 drop-shadow-2xl scale-125 origin-top-right">
                 <Tonearm isPlaying={isPlaying} />
             </div>
 

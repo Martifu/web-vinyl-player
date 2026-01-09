@@ -1,0 +1,31 @@
+{
+  "vinyls": [
+    {
+      "id": "ee9d9faa-f0f7-46d0-a700-7a19243886dc",
+      "title": "1",
+      "artist": "1",
+      "coverPath": "/api/files/vinyl-ee9d9faa-f0f7-46d0-a700-7a19243886dc/cover.jpg",
+      "createdAt": 1768000362217
+    }
+  ],
+  "tracks": [
+    {
+      "id": "25078911-0e62-4c2a-a027-759be6ac7735",
+      "vinylId": "ee9d9faa-f0f7-46d0-a700-7a19243886dc",
+      "title": "01 - Voy A Apagar La Luz - Contigo Aprendi",
+      "order": 1,
+      "side": "A",
+      "diskNumber": 1,
+      "audioPath": "/api/files/vinyl-ee9d9faa-f0f7-46d0-a700-7a19243886dc/track-1.mp3"
+    },
+    {
+      "id": "2fb77bc9-ccf1-4c61-ab50-0c6ffdbc67ff",
+      "vinylId": "ee9d9faa-f0f7-46d0-a700-7a19243886dc",
+      "title": "02 - Sabor A Mi",
+      "order": 2,
+      "side": "A",
+      "diskNumber": 1,
+      "audioPath": "/api/files/vinyl-ee9d9faa-f0f7-46d0-a700-7a19243886dc/track-2.mp3"
+    }
+  ]
+}

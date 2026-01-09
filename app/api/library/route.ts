@@ -2,7 +2,8 @@ import { NextRequest, NextResponse } from 'next/server';
 import fs from 'fs/promises';
 import path from 'path';
 
-const LIBRARY_BASE = path.join(process.cwd(), 'public', 'library');
+// Use UPLOADS_DIR for Docker, fallback to public/library for local dev
+const LIBRARY_BASE = process.env.UPLOADS_DIR || path.join(process.cwd(), 'public', 'library');
 const LIBRARY_FILE = path.join(LIBRARY_BASE, 'library.json');
 
 export interface VinylData {

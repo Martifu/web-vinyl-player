@@ -2,7 +2,8 @@ import { NextRequest, NextResponse } from 'next/server';
 import fs from 'fs/promises';
 import path from 'path';
 
-const LIBRARY_BASE = path.join(process.cwd(), 'public', 'library');
+// Use UPLOADS_DIR for Docker, fallback to public/library for local dev
+const LIBRARY_BASE = process.env.UPLOADS_DIR || path.join(process.cwd(), 'public', 'library');
 
 export async function POST(request: NextRequest) {
     try {
@@ -36,8 +37,8 @@ export async function POST(request: NextRequest) {
         const buffer = Buffer.from(await file.arrayBuffer());
         await fs.writeFile(filePath, buffer);
 
-        // Return the public URL path (global path)
-        const publicPath = `/library/vinyl-${vinylId}/${fileName}`;
+        // Return the API path for serving (not public path since UPLOADS_DIR is outside public)
+        const publicPath = `/api/files/vinyl-${vinylId}/${fileName}`;
 
         return NextResponse.json({ success: true, path: publicPath });
     } catch (error) {
