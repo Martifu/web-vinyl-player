@@ -49,19 +49,27 @@ export async function GET() {
 
 // POST: Save the global library
 export async function POST(request: NextRequest) {
+    console.log('[API/library POST] Received request');
+    console.log('[API/library POST] LIBRARY_BASE:', LIBRARY_BASE);
+    console.log('[API/library POST] LIBRARY_FILE:', LIBRARY_FILE);
+
     try {
         const body = await request.json();
         const { library }: { library: LibraryData } = body;
 
+        console.log('[API/library POST] Library data:', library?.vinyls?.length || 0, 'vinyls,', library?.tracks?.length || 0, 'tracks');
+
         // Ensure library folder exists
         await fs.mkdir(LIBRARY_BASE, { recursive: true });
+        console.log('[API/library POST] Directory ensured:', LIBRARY_BASE);
 
         // Save library.json
         await fs.writeFile(LIBRARY_FILE, JSON.stringify(library, null, 2));
+        console.log('[API/library POST] File written successfully:', LIBRARY_FILE);
 
         return NextResponse.json({ success: true });
     } catch (error) {
-        console.error('Error saving library:', error);
-        return NextResponse.json({ error: 'Failed to save library' }, { status: 500 });
+        console.error('[API/library POST] Error:', error);
+        return NextResponse.json({ error: 'Failed to save library', details: String(error) }, { status: 500 });
     }
 }

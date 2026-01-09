@@ -41,16 +41,23 @@ export const useLibraryStore = create<LibraryStore>((set, get) => ({
     setLibrary: (library) => set({ library }),
 
     addVinyl: (vinyl, tracks) => {
-        const current = get().library;
-        if (!current) return;
+        let current = get().library;
 
-        set({
-            library: {
-                ...current,
-                vinyls: [...current.vinyls, vinyl],
-                tracks: [...current.tracks, ...tracks],
-            }
-        });
+        // If library is null (not loaded yet), create empty one
+        if (!current) {
+            console.warn('Library was null when adding vinyl, creating empty library');
+            current = { vinyls: [], tracks: [] };
+        }
+
+        const newLibrary = {
+            ...current,
+            vinyls: [...current.vinyls, vinyl],
+            tracks: [...current.tracks, ...tracks],
+        };
+
+        console.log('Adding vinyl to library:', vinyl.title, 'Total vinyls:', newLibrary.vinyls.length);
+
+        set({ library: newLibrary });
 
         // Auto-save to server
         get().saveToServer();
@@ -74,16 +81,28 @@ export const useLibraryStore = create<LibraryStore>((set, get) => ({
 
     saveToServer: async () => {
         const library = get().library;
-        if (!library) return;
+        if (!library) {
+            console.error('saveToServer: library is null, cannot save');
+            return;
+        }
+
+        console.log('saveToServer: Saving library with', library.vinyls.length, 'vinyls and', library.tracks.length, 'tracks');
 
         try {
-            await fetch('/api/library', {
+            const res = await fetch('/api/library', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ library }),
             });
+
+            const data = await res.json();
+            console.log('saveToServer: Response:', data);
+
+            if (!res.ok) {
+                console.error('saveToServer: Server returned error:', data);
+            }
         } catch (error) {
-            console.error('Failed to save library:', error);
+            console.error('saveToServer: Failed to save library:', error);
         }
     },
 
