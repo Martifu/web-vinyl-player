@@ -1,26 +1,199 @@
 @import "tailwindcss";
+@import "tw-animate-css";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+@custom-variant dark (&:is(.dark *));
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar: var(--sidebar);
+  --color-chart-5: var(--chart-5);
+  --color-chart-4: var(--chart-4);
+  --color-chart-3: var(--chart-3);
+  --color-chart-2: var(--chart-2);
+  --color-chart-1: var(--chart-1);
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+  --radius-3xl: calc(var(--radius) + 12px);
+  --radius-4xl: calc(var(--radius) + 16px);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+:root {
+  --radius: 0.75rem;
+
+  /* Neutral Background - Subtle Gray/White for Glass effect base */
+  --background: #F3F4F6;
+  /* Gray 100 */
+  --foreground: #111827;
+  /* Gray 900 */
+
+  /* Glass Cards */
+  --card: rgba(255, 255, 255, 0.7);
+  --card-foreground: #111827;
+
+  --popover: rgba(255, 255, 255, 0.9);
+  --popover-foreground: #111827;
+
+  /* Primary - Black/Dark Gray for strong contrast */
+  --primary: #111827;
+  --primary-foreground: #FFFFFF;
+
+  /* Secondary - Gray for subtle actions */
+  --secondary: #E5E7EB;
+  /* Gray 200 */
+  --secondary-foreground: #1F2937;
+
+  /* Muted */
+  --muted: #F3F4F6;
+  --muted-foreground: #6B7280;
+
+  /* Accent - perhaps a subtle blur or shimmer color */
+  --accent: rgba(255, 255, 255, 0.5);
+  --accent-foreground: #111827;
+
+  --destructive: #EF4444;
+  --destructive-foreground: #FFFFFF;
+
+  --border: rgba(0, 0, 0, 0.1);
+  --input: rgba(0, 0, 0, 0.05);
+  /* Very subtle input bg */
+  --ring: #9CA3AF;
+  /* Gray 400 */
+
+  --chart-1: #111827;
+  --chart-2: #374151;
+  --chart-3: #4B5563;
+  --chart-4: #6B7280;
+  --chart-5: #9CA3AF;
+
+  --sidebar: rgba(255, 255, 255, 0.7);
+  --sidebar-foreground: #111827;
+  --sidebar-primary: #111827;
+  --sidebar-primary-foreground: #FFFFFF;
+  --sidebar-accent: #F3F4F6;
+  --sidebar-accent-foreground: #111827;
+  --sidebar-border: rgba(0, 0, 0, 0.1);
+  --sidebar-ring: #9CA3AF;
+}
+
+.dark {
+  /* Modern Dark Mode - Deep Greys & Blacks */
+  --background: #030712;
+  /* Gray 950 */
+  --foreground: #F9FAFB;
+  /* Gray 50 */
+
+  --card: rgba(17, 24, 39, 0.7);
+  /* Gray 900 with opacity */
+  --card-foreground: #F9FAFB;
+
+  --popover: rgba(17, 24, 39, 0.9);
+  --popover-foreground: #F9FAFB;
+
+  --primary: #F9FAFB;
+  --primary-foreground: #030712;
+
+  --secondary: #1F2937;
+  /* Gray 800 */
+  --secondary-foreground: #F9FAFB;
+
+  --muted: #1F2937;
+  --muted-foreground: #9CA3AF;
+
+  --accent: rgba(31, 41, 55, 0.5);
+  --accent-foreground: #F9FAFB;
+
+  --destructive: #7F1D1D;
+  --destructive-foreground: #F9FAFB;
+
+  --border: rgba(255, 255, 255, 0.1);
+  --input: rgba(255, 255, 255, 0.05);
+  --ring: #D1D5DB;
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+
+  body {
+    @apply bg-background text-foreground;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+/* Smart TV Remote Navigation Styles */
+.tv-navigation-container *:focus,
+.tv-navigation-container *:focus-visible {
+  outline: none !important;
+  outline-color: transparent !important;
+}
+
+.tv-navigation-container button:focus,
+.tv-navigation-container button:focus-visible,
+.tv-navigation-container a:focus,
+.tv-navigation-container a:focus-visible,
+.tv-navigation-container input:focus,
+.tv-navigation-container input:focus-visible,
+.tv-navigation-container [tabindex]:focus,
+.tv-navigation-container [tabindex]:focus-visible,
+.tv-navigation-container [data-focusable="true"]:focus,
+.tv-navigation-container [data-focusable="true"]:focus-visible {
+  outline: 4px solid #000000 !important;
+  outline-offset: 4px !important;
+  border-radius: 24px;
+  transform: scale(1.02);
+  transition: all 0.15s ease-out;
+}
+
+/* TV-optimized scrollbar (hidden but functional) */
+.tv-navigation-container ::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+.tv-navigation-container ::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.tv-navigation-container ::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 4px;
+}
+
+/* Larger touch/click targets for TV */
+@media (min-width: 1920px) {
+
+  .tv-navigation-container button,
+  .tv-navigation-container [data-focusable="true"] {
+    min-height: 48px;
+    min-width: 48px;
+  }
 }

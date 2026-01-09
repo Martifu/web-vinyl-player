@@ -1,0 +1,77 @@
+{
+  "userName": "martin",
+  "vinyls": [
+    {
+      "id": "e07806af-70ab-45f0-a2ea-a81f69c4b8a9",
+      "title": "asdasd",
+      "artist": "asdasd",
+      "coverPath": "/library/martin/vinyl-e07806af-70ab-45f0-a2ea-a81f69c4b8a9/cover.jpg",
+      "createdAt": 1767996369614
+    }
+  ],
+  "tracks": [
+    {
+      "id": "82c433a8-4032-4ad4-be2a-3f13542e60e6",
+      "vinylId": "e07806af-70ab-45f0-a2ea-a81f69c4b8a9",
+      "title": "01 - Voy A Apagar La Luz - Contigo Aprendi",
+      "order": 1,
+      "side": "A",
+      "diskNumber": 1,
+      "audioPath": "/library/martin/vinyl-e07806af-70ab-45f0-a2ea-a81f69c4b8a9/track-1.mp3"
+    },
+    {
+      "id": "ff31be46-604d-414f-93a2-0166717f0c13",
+      "vinylId": "e07806af-70ab-45f0-a2ea-a81f69c4b8a9",
+      "title": "02 - Sabor A Mi",
+      "order": 2,
+      "side": "A",
+      "diskNumber": 1,
+      "audioPath": "/library/martin/vinyl-e07806af-70ab-45f0-a2ea-a81f69c4b8a9/track-2.mp3"
+    },
+    {
+      "id": "a9b20848-2ec1-4d3a-a1f1-5e7ec6319104",
+      "vinylId": "e07806af-70ab-45f0-a2ea-a81f69c4b8a9",
+      "title": "03 - Por Debajo De La Mesa",
+      "order": 3,
+      "side": "A",
+      "diskNumber": 1,
+      "audioPath": "/library/martin/vinyl-e07806af-70ab-45f0-a2ea-a81f69c4b8a9/track-3.mp3"
+    },
+    {
+      "id": "71eaf73a-a510-4bea-b8cd-6c65c087703b",
+      "vinylId": "e07806af-70ab-45f0-a2ea-a81f69c4b8a9",
+      "title": "04 - La Gloria Eres Tu",
+      "order": 4,
+      "side": "A",
+      "diskNumber": 1,
+      "audioPath": "/library/martin/vinyl-e07806af-70ab-45f0-a2ea-a81f69c4b8a9/track-4.mp3"
+    },
+    {
+      "id": "15927e10-18fe-49fd-8abf-03c169f04a89",
+      "vinylId": "e07806af-70ab-45f0-a2ea-a81f69c4b8a9",
+      "title": "05 - Amanecer",
+      "order": 5,
+      "side": "A",
+      "diskNumber": 1,
+      "audioPath": "/library/martin/vinyl-e07806af-70ab-45f0-a2ea-a81f69c4b8a9/track-5.mp3"
+    },
+    {
+      "id": "70486029-6226-4901-989d-3eb87b0414ee",
+      "vinylId": "e07806af-70ab-45f0-a2ea-a81f69c4b8a9",
+      "title": "06 - Encadenados",
+      "order": 6,
+      "side": "A",
+      "diskNumber": 1,
+      "audioPath": "/library/martin/vinyl-e07806af-70ab-45f0-a2ea-a81f69c4b8a9/track-6.mp3"
+    },
+    {
+      "id": "b93e2c82-0e08-427a-9761-149f965cbb24",
+      "vinylId": "e07806af-70ab-45f0-a2ea-a81f69c4b8a9",
+      "title": "07 - Besame Mucho",
+      "order": 7,
+      "side": "A",
+      "diskNumber": 1,
+      "audioPath": "/library/martin/vinyl-e07806af-70ab-45f0-a2ea-a81f69c4b8a9/track-7.mp3"
+    }
+  ]
+}
