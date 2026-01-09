@@ -39,7 +39,6 @@ export const PlayerScreen = () => {
         artist: vinyl.artist,
         coverImage: vinyl.coverPath,
         coverFront: vinyl.coverPath,
-        userName: library?.userName || '',
         createdAt: vinyl.createdAt,
     } : null;
 
