@@ -10,14 +10,26 @@ import { useState, useEffect } from "react";
 export default function Home() {
   const { userName, view, playVinyl } = useStore();
   const library = useLibraryStore((state) => state.library);
-  const [mounted, setMounted] = useState(false);
+  const loadFromServer = useLibraryStore((state) => state.loadFromServer);
+  const [hydrated, setHydrated] = useState(false);
 
-  // Wait for hydration
+  // Wait for Zustand persist hydration
   useEffect(() => {
-    setMounted(true);
+    // Give Zustand time to rehydrate from localStorage
+    const timeout = setTimeout(() => {
+      setHydrated(true);
+    }, 100);
+    return () => clearTimeout(timeout);
   }, []);
 
-  if (!mounted) return null;
+  // Load library from server when user exists and is hydrated
+  useEffect(() => {
+    if (hydrated && userName) {
+      loadFromServer();
+    }
+  }, [hydrated, userName, loadFromServer]);
+
+  if (!hydrated) return null;
 
   if (!userName) {
     return <WelcomeScreen />;
